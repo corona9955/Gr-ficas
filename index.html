@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráficas con chart.js | By Parzibyte</title>
+    <script src="Chart.min.js"></script>
+</head>
+
+<body>
+    <div style="height: 700px;width: 700px;">
+        <h1>BeeCare - Pruebas de conocimiento a usuarios.</h1>
+        <canvas id="grafica"></canvas>
+    </div>
+
+
+
+    <script>
+        // Obtener una referencia al elemento canvas del DOM
+        const $grafica = document.querySelector("#grafica");
+        // Las etiquetas son las que van en el eje X. 
+        const etiquetas = ["Pruebas sobre conocimiento de abejas"]
+        // Podemos tener varios conjuntos de datos. Comencemos con uno
+        const FirstTest = {
+            label: "Prueba diágnostica",
+            data: [66.6], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+            backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
+            borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
+            borderWidth: 1,// Ancho del borde
+        };
+        const SecondTest = {
+            label: "Prueba 1",
+            data: [60], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+            backgroundColor: 'rgba(240, 219, 5, 0.2)', // Color de fondo
+            borderColor: 'rgba(240, 194, 5, 1)', // Color del borde
+            borderWidth: 1,// Ancho del borde
+        };
+        const ThirdTest = {
+            label: "Prueba 2",
+            data: [72.2], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+            backgroundColor: 'rgba(3, 253, 238, 0.2)', // Color de fondo
+            borderColor: 'rgba(14, 182, 171, 1)', // Color del borde
+            borderWidth: 1,// Ancho del borde
+        };
+        new Chart($grafica, {
+            type: 'bar',// Tipo de gráfica
+            data: {
+                labels: etiquetas,
+                datasets: [
+                FirstTest,
+                SecondTest,
+                ThirdTest,
+                    // Aquí más datos...
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>
